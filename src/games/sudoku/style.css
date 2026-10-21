@@ -1,0 +1,281 @@
+.sudoku {
+  --cell-bg: rgba(255, 255, 255, 0.94);
+  --cell-ink: #1d2a5e;
+  --cell-user: #3d6bff;
+  --cell-related: #dfe6ff;
+  --cell-same: #b9c8ff;
+  --cell-selected: #9fb4ff;
+  --cell-wrong: #e23b3b;
+  --grid-line: #1d2a5e;
+  align-items: center;
+  padding: 0 16px 12px;
+}
+
+.sudoku-hud {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 520px;
+  padding: 4px 0 10px;
+}
+
+.sudoku-hud .info {
+  text-align: center;
+}
+
+.sudoku-hud .difficulty {
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.sudoku-hud .time {
+  font-size: 30px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.sudoku-hud .mistakes {
+  width: 44px;
+  text-align: center;
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.sudoku .board-wrap {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  container-type: size;
+}
+
+.sudoku .board {
+  width: min(100cqw, 100cqh, 520px);
+  aspect-ratio: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 3px;
+  padding: 3px;
+  background: var(--grid-line);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.sudoku .box {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 1px;
+  min-width: 0;
+  min-height: 0;
+  background: #9aa6cf;
+}
+
+.sudoku .cell {
+  position: relative;
+  border: none;
+  padding: 0;
+  min-width: 0;
+  min-height: 0;
+  background: var(--cell-bg);
+  color: var(--cell-user);
+  font: inherit;
+  font-size: min(6.5cqw, 6.5cqh, 34px);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.12s;
+}
+
+.sudoku .cell.given {
+  color: var(--cell-ink);
+  font-weight: 800;
+}
+
+.sudoku .cell.related {
+  background: var(--cell-related);
+}
+
+.sudoku .cell.same {
+  background: var(--cell-same);
+}
+
+.sudoku .cell.selected {
+  background: var(--cell-selected);
+}
+
+.sudoku .cell.wrong {
+  color: var(--cell-wrong);
+}
+
+.sudoku .cell.conflict {
+  background: #ffd0d0;
+}
+
+.sudoku .cell.flash {
+  animation: sudoku-flash 0.6s ease-out;
+}
+
+@keyframes sudoku-flash {
+  30% {
+    background: #ffe27a;
+    transform: scale(1.06);
+  }
+}
+
+.sudoku .notes {
+  position: absolute;
+  inset: 2px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  font-size: min(2.4cqw, 2.4cqh, 12px);
+  font-weight: 600;
+  color: #5a6796;
+  line-height: 1;
+}
+
+.sudoku .notes span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sudoku .notes span.hl {
+  background: var(--cell-selected);
+  color: var(--cell-ink);
+  border-radius: 3px;
+}
+
+.sudoku .tools {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 520px;
+  padding: 12px 0 6px;
+}
+
+.sudoku .tool {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-width: 64px;
+  border: none;
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.sudoku .tool:disabled {
+  opacity: 0.4;
+}
+
+.sudoku .tool-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sudoku .tool.on .tool-icon {
+  background: var(--gold);
+  color: #1d2a5e;
+}
+
+.sudoku .tool .badge {
+  position: absolute;
+  top: -4px;
+  right: 4px;
+  padding: 1px 5px;
+  border-radius: 8px;
+  background: #4a5ba8;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.sudoku .tool.on .badge {
+  background: #24a356;
+}
+
+.sudoku .pad {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 6px;
+  width: 100%;
+  max-width: 520px;
+}
+
+.sudoku .pad-btn {
+  height: 60px;
+  border: none;
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+}
+
+.sudoku .pad-btn:active {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.sudoku .pad-btn .digit {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.sudoku .pad-btn .left {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.sudoku .pad.notes-mode .pad-btn .digit {
+  color: var(--gold);
+  font-size: 20px;
+}
+
+.sudoku .pad-btn.done {
+  visibility: hidden;
+}
+
+.sudoku .levels {
+  display: flex;
+  flex-direction: column;
+}
+
+.sudoku .levels .level {
+  margin-top: 10px;
+}
+
+.sudoku .levels + .secondary {
+  background: none;
+  color: var(--muted);
+  font-size: 16px;
+  height: 44px;
+}
