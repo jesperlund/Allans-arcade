@@ -8,6 +8,7 @@ Included games:
 | --- | --- |
 | **BlockBomb** | Drag pieces onto an 8×8 board and clear full rows and columns ([from the BlockBomb project](https://github.com/jesperlund/BlockBomb)). |
 | **Sudoku** | The classic 9×9 number puzzle with four difficulties, notes, hints, undo, a timer and best times. |
+| **2048** | Swipe to slide the tiles; equal tiles merge. Reach 2048 (and keep going), with undo and a best score. |
 
 Every game saves its progress on the device, so you can leave and pick up where you left off.
 

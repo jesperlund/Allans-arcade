@@ -43,4 +43,24 @@ export const GAMES: GameDefinition[] = [
     },
     load: () => import('../games/sudoku'),
   },
+  {
+    id: '2048',
+    name: '2048',
+    tagline: 'Slide and merge to reach 2048',
+    colors: ['#ffc23f', '#f08a1c'],
+    icon: `<svg viewBox="0 0 64 64" aria-hidden="true">
+      <rect x="4" y="4" width="56" height="56" rx="10" fill="#2a3b85"/>
+      <g font-family="system-ui,sans-serif" font-weight="800" text-anchor="middle">
+        <rect x="9" y="9" width="21" height="21" rx="4" fill="#e8ecff"/><text x="19.5" y="25" font-size="14" fill="#2a3b85">2</text>
+        <rect x="34" y="9" width="21" height="21" rx="4" fill="#3d7bff"/><text x="44.5" y="25" font-size="13" fill="#fff">16</text>
+        <rect x="9" y="34" width="21" height="21" rx="4" fill="#ef4b4b"/><text x="19.5" y="49" font-size="9.5" fill="#fff">128</text>
+        <rect x="34" y="34" width="21" height="21" rx="4" fill="#ffd23f"/><text x="44.5" y="48.5" font-size="7.5" fill="#2a3b85">2048</text>
+      </g>
+    </svg>`,
+    stat: (store) => {
+      const best = store.getNumber('best');
+      return best ? `Best ${best.toLocaleString()}` : null;
+    },
+    load: () => import('../games/2048'),
+  },
 ];
