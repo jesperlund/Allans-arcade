@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Allan\'s Arcade</string>
+    <string name="title_activity_main">Allan\'s Arcade</string>
+    <string name="package_name">com.jesperlund.allansarcade</string>
+    <string name="custom_url_scheme">com.jesperlund.allansarcade</string>
+</resources>
