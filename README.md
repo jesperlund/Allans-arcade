@@ -9,6 +9,7 @@ Included games:
 | **BlockBomb** | Drag pieces onto an 8×8 board and clear full rows and columns ([from the BlockBomb project](https://github.com/jesperlund/BlockBomb)). |
 | **Sudoku** | The classic 9×9 number puzzle with four difficulties, notes, hints, undo, a timer and best times. |
 | **2048** | Swipe to slide the tiles; equal tiles merge. Reach 2048 (and keep going), with undo and a best score. |
+| **Tetris** | Classic falling blocks: 7-bag pieces, SRS rotation, ghost piece, next preview, NES scoring and speed-up every 10 lines. Swipe/tap or on-screen buttons. |
 
 Every game saves its progress on the device, so you can leave and pick up where you left off.
 
@@ -23,7 +24,7 @@ Built with TypeScript + Vite and packaged as a native Android app with
 | `src/arcade/registry.ts` | **The list of games** in the library |
 | `src/arcade/types.ts` | The contract every game implements (`GameDefinition`, `GameModule`) |
 | `src/games/<id>/` | One folder per game |
-| `src/shared/` | Sound effects, haptics and per-game storage shared by all games |
+| `src/shared/` | Sound effects, haptics, per-game storage and the glossy block renderer shared by all games |
 | `android/` | Native Capacitor project |
 | `assets/` | Source images for the app icon and splash screen |
 

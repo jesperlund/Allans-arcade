@@ -63,4 +63,23 @@ export const GAMES: GameDefinition[] = [
     },
     load: () => import('../games/2048'),
   },
+  {
+    id: 'tetris',
+    name: 'Tetris',
+    tagline: 'Stack the falling blocks, clear the lines',
+    colors: ['#a259ff', '#6a3fd6'],
+    icon: `<svg viewBox="0 0 64 64" aria-hidden="true">
+      <g stroke="rgba(0,0,0,.25)" stroke-width="1.5">
+        <rect x="14" y="4" width="12" height="12" rx="2.5" fill="#a259ff"/><rect x="2" y="16" width="12" height="12" rx="2.5" fill="#a259ff"/><rect x="14" y="16" width="12" height="12" rx="2.5" fill="#a259ff"/><rect x="26" y="16" width="12" height="12" rx="2.5" fill="#a259ff"/>
+        <rect x="50" y="4" width="12" height="12" rx="2.5" fill="#27c2e8"/><rect x="50" y="16" width="12" height="12" rx="2.5" fill="#27c2e8"/><rect x="50" y="28" width="12" height="12" rx="2.5" fill="#27c2e8"/><rect x="50" y="40" width="12" height="12" rx="2.5" fill="#27c2e8"/>
+        <rect x="2" y="40" width="12" height="12" rx="2.5" fill="#ffd23f"/><rect x="14" y="40" width="12" height="12" rx="2.5" fill="#ffd23f"/><rect x="2" y="52" width="12" height="12" rx="2.5" fill="#ffd23f"/><rect x="14" y="52" width="12" height="12" rx="2.5" fill="#ffd23f"/>
+        <rect x="26" y="40" width="12" height="12" rx="2.5" fill="#ef4b4b"/><rect x="38" y="40" width="12" height="12" rx="2.5" fill="#ef4b4b"/><rect x="38" y="52" width="12" height="12" rx="2.5" fill="#ef4b4b"/><rect x="50" y="52" width="12" height="12" rx="2.5" fill="#ef4b4b"/>
+      </g>
+    </svg>`,
+    stat: (store) => {
+      const best = store.getNumber('best');
+      return best ? `Best ${best.toLocaleString()}` : null;
+    },
+    load: () => import('../games/tetris'),
+  },
 ];
