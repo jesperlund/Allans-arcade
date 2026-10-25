@@ -1,3 +1,5 @@
+import { BLOCK_COLORS } from '../../../shared/blocks';
+
 /** A cell offset within a piece: [row, col]. */
 export type Cell = readonly [number, number];
 
@@ -16,16 +18,7 @@ export interface Piece {
 }
 
 /** Block colors, indexed by Piece.color. Board cells store color + 1. */
-export const COLORS = [
-  '#ef4b4b', // red
-  '#ff9a1f', // orange
-  '#ffd23f', // yellow
-  '#3ccf6e', // green
-  '#27c2e8', // cyan
-  '#3d7bff', // blue
-  '#a259ff', // purple
-  '#ff5fa8', // pink
-] as const;
+export const COLORS = BLOCK_COLORS;
 
 function parse(id: string, weight: number, art: string): Shape {
   const lines = art
